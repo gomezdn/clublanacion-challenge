@@ -8,7 +8,7 @@ import smileIcon from '@public/svg/smile-icon.svg'
 
 export default function Header() {
     return (
-        <header className='flex justify-between items-center w-full bg-white bg-opacity-[0.08] px-10 sticky top-0'>
+        <header className='flex justify-between items-center w-full bg-white bg-opacity-[0.1] px-10 fixed z-50'>
             <div className="flex items-center">
                 <button>
                     <Image alt='menu icon' src={hamburgerIcon} height={30} width={32}/>
