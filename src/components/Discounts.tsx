@@ -1,8 +1,12 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { DiscountAccountCardData } from "@/types"
 import arrowRightIcon from '@public/svg/arrow-right-black.svg'
 import arrowLeftIcon from '@public/svg/arrow-left-black.svg' 
+import { useEffect, useState } from "react"
+import { getDiscountsAccountCardsData } from "@/lib/services"
 
 function DiscountAccountCard({ cardData }: { cardData: DiscountAccountCardData }) {
     const {
@@ -27,7 +31,14 @@ function DiscountAccountCard({ cardData }: { cardData: DiscountAccountCardData }
 }
 
 export default function Discounts() {
-    const accounts: DiscountAccountCardData[] = []
+    const [accounts, setAccounts] = useState<DiscountAccountCardData[]>([])
+
+    useEffect(() => {
+        (async () => {
+            const tourismAccounts = await getDiscountsAccountCardsData()
+            setAccounts(tourismAccounts)
+        })()
+    }, [])
 
     return (
         <section className='flex flex-col items-center gap-10 h-max py-24 w-full bg-[#f7f7f4]'>

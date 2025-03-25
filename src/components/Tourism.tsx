@@ -1,10 +1,14 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { TourismAccountCardData, BenefitProgram } from "@/types"
 import arrowRightIcon from '@public/svg/arrow-right-black.svg'
 import arrowLeftIcon from '@public/svg/arrow-left-black.svg'
 import locationIcon from '@public/svg/location-icon.svg'
-import { formatDistance } from "@/lib/utils"
+import { formatDistance } from "@/lib/account"
+import { useEffect, useState } from "react"
+import { getTourismAccountCardsData } from "@/lib/services"
 
 function TourismAccountCard({ cardData }: { cardData: TourismAccountCardData}) {
     const {
@@ -41,7 +45,14 @@ function TourismAccountCard({ cardData }: { cardData: TourismAccountCardData}) {
 }
 
 export default function Tourism() {
-    const accounts: TourismAccountCardData[] = []
+    const [accounts, setAccounts] = useState<TourismAccountCardData[]>([])
+
+    useEffect(() => {
+        (async () => {
+            const tourismAccounts = await getTourismAccountCardsData()
+            setAccounts(tourismAccounts)
+        })()
+    }, [])
 
     return (
         <section className='flex flex-col items-center gap-10 h-max py-24 w-full bg-white'>
