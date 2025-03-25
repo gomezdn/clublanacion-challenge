@@ -15,3 +15,9 @@ export enum BenefitProgram {
     premium = 'Club La Nación Premium',
     black = 'Club La Nación Black'
 }
+
+export type DiscountAccountCardData = {
+    name: string
+    image: string
+    url: string
+}

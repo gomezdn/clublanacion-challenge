@@ -1,5 +1,6 @@
 import Promos from "@/components/Promos"
 import Tourism from "@/components/Tourism"
+import Discounts from "@/components/Discounts"
 
 export default function Home() {
   return (
@@ -7,6 +8,7 @@ export default function Home() {
       <main className='flex flex-col'>
         <Promos />
         <Tourism />
+        <Discounts />
       </main>       
     </div>
   )
