@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { RefObject, useEffect, useState } from "react"
 import { DiscountAccountCardData, TourismAccountCardData } from "@/types"
 import { getDiscountsAccountCardsData, getTourismAccountCardsData } from "./services"
 
@@ -87,5 +87,38 @@ export function useDiscountsAccounts() {
         previousPage,
         getNextPageAccounts,
         getPreviousPageAccounts
+    }
+}
+
+export function useScroll({ width, ref, requestNext, requestPrevious }: { width: number, ref: RefObject<HTMLDivElement | null>, requestNext: CallableFunction, requestPrevious: CallableFunction }) {
+    function scrollRight() {
+        if (ref && ref.current) {
+            if ((ref.current.scrollLeft + Math.max(width, ref.current.clientWidth) < ref.current.scrollWidth)) {
+                ref?.current?.scrollBy({
+                    left: width,
+                    behavior: 'smooth'
+                })
+            } else {
+                requestNext()
+            }
+        }
+    }
+
+    function scrollLeft() {
+        if (ref && ref.current) {
+            if ((ref.current.scrollLeft > 0)) {
+                ref?.current?.scrollBy({
+                    left: -width,
+                    behavior: 'smooth'
+                })
+            } else {
+                requestPrevious()
+            }
+        }
+    }
+
+    return {
+        scrollRight,
+        scrollLeft
     }
 }
