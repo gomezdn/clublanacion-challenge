@@ -7,7 +7,6 @@ export function getRequestData(req: NextRequest) {
     const filterValue = req.nextUrl.searchParams.get('filterValue')
     const sortField = req.nextUrl.searchParams.get('sortField')
     const sortOrder = req.nextUrl.searchParams.get('sortOrder')
-    console.log({filterField, filterValue, sortField, sortOrder})
 
     return { 
         sort: sortField && sortOrder ? { sortField, sortOrder } as { sortField: SortField, sortOrder: SortOrder } : null,
