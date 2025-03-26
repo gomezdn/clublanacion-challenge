@@ -15,7 +15,7 @@ function DiscountAccountCard({ cardData }: { cardData: DiscountAccountCardData }
     } = cardData
 
     return (
-        <div className='flex flex-col items-start h-[407px] w-[326px] rounded-xl text-white'>
+        <div className='flex flex-col items-start h-[407px] w-[326px] rounded-xl text-white md:m-0 mx-1'>
             <div className='h-[300px] w-[326px] relative'>
                 <Link href={url} target='_blank'>
                     <Image src={image} fill className='rounded-t-xl object-cover' alt='account image'/>

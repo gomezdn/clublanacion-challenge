@@ -19,7 +19,7 @@ function TourismAccountCard({ cardData }: { cardData: TourismAccountCardData}) {
     } = cardData
 
     return (
-        <div className='flex flex-col items-start h-[407px] w-[326px] rounded-xl border-[1px] bg-white'>
+        <div className='flex flex-col items-start h-[407px] w-[326px] rounded-xl border-[1px] bg-white md:m-0 mx-1'>
             <div className='h-[219px] w-[326px] relative'>
                 <Link href={url} target='_blank'>
                     <Image src={image} fill className='rounded-t-xl object-cover' alt='account image'/>
@@ -64,7 +64,7 @@ export default function TourismSlider() {
                     </div>
                     :
                     <div className='h-[407px] w-full flex items-center justify-center'>
-                        <h1 className='text-xl text-black'>Cargando productos...</h1>
+                        <h1 className='text-xl text-black'>Obteniendo productos...</h1>
                     </div>
                 }
                 <Image onClick={getNextPageAccounts} className={`${nextPage ? 'cursor-pointer' : 'opacity-30'} z-50`} src={arrowRightIcon} alt='slide to the right button' width={25} height={25}/>
