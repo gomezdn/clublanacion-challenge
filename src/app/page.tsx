@@ -1,6 +1,6 @@
 import Promos from "@/components/Promos"
-import Tourism from "@/components/Tourism"
-import Discounts from "@/components/Discounts"
+import Tourism from "@/components/Tourism/Tourism"
+import Discounts from "@/components/Discounts/Discounts"
 
 export default function Home() {
   return (

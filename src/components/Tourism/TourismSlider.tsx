@@ -43,7 +43,7 @@ function TourismAccountCard({ cardData }: { cardData: TourismAccountCardData}) {
     )
 }
 
-export default function Tourism() {
+export default function TourismSlider() {
     const {
         accounts,
         nextPage,
@@ -53,27 +53,22 @@ export default function Tourism() {
     } = useTourismAccounts()
 
     return (
-        <section className='flex flex-col items-center gap-10 h-max py-24 w-full bg-white'>
-            <div className='flex justify-between w-[85vw] font-bold'>
-                <h1 className='text-5xl text-[#11154b]'>Turismo en Buenos Aires</h1>
-                <button className='text-blue-500 border-blue-500 md:rounded-l-full md:rounded-r-full rounded-md px-6 py-4 w-max h-max border-2 text-center font-bold'>TODOS LOS BENEFICIOS</button>
+        <>
+            <div className='flex gap-4 w-[85vw] md:justify-between'>
+                <Image onClick={getPreviousPageAccounts} className={`${previousPage ? 'cursor-pointer' : 'opacity-30'} z-50`} src={arrowLeftIcon} alt='slide to the left button' width={25} height={25}/>
+                {
+                    accounts.length
+                    ?
+                    <div className='flex overflow-x-scroll justify-around w-[78vw]'>
+                        {accounts.map(a => <TourismAccountCard cardData={a} key={a.name}/>)}
+                    </div>
+                    :
+                    <div className='h-[407px] w-full flex items-center justify-center'>
+                        <h1 className='text-xl text-black'>Cargando productos...</h1>
+                    </div>
+                }
+                <Image onClick={getNextPageAccounts} className={`${nextPage ? 'cursor-pointer' : 'opacity-30'} z-50`} src={arrowRightIcon} alt='slide to the right button' width={25} height={25}/>
             </div>
-
-                <div className='flex gap-4 w-[85vw] md:justify-between'>
-                    <Image onClick={getPreviousPageAccounts} className={`${previousPage ? 'cursor-pointer' : 'opacity-30'} z-50`} src={arrowLeftIcon} alt='slide to the left button' width={25} height={25}/>
-                    {
-                        accounts.length
-                        ?
-                        <div className='flex overflow-x-scroll justify-around w-[78vw]'>
-                            {accounts.map(a => <TourismAccountCard cardData={a} key={a.name}/>)}
-                        </div>
-                        :
-                        <div className='h-[407px] w-full flex items-center justify-center'>
-                            <h1 className='text-xl text-black'>Cargando productos...</h1>
-                        </div>
-                    }
-                    <Image onClick={getNextPageAccounts} className={`${nextPage ? 'cursor-pointer' : 'opacity-30'} z-50`} src={arrowRightIcon} alt='slide to the right button' width={25} height={25}/>
-                </div>
-        </section>
+        </>
     )
 }
