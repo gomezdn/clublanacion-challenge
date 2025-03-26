@@ -1,3 +1,6 @@
+"use client"
+
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import logo from '@public/svg/lanacion-logo.svg'
 import hamburgerIcon from '@public/svg/hamburger-menu-icon.svg'
@@ -7,8 +10,21 @@ import notificationsIcon from '@public/svg/notifications-icon.svg'
 import smileIcon from '@public/svg/smile-icon.svg'
 
 export default function Header() {
+    const [pageScrolled, setPageScrolled] = useState(false)
+
+    function checkScroll() {
+        setPageScrolled(window.scrollY !== 0);
+    }
+
+    useEffect(() => {
+        window.addEventListener("scroll", checkScroll)
+        setPageScrolled(window.scrollY !== 0)
+    
+        return () => window.removeEventListener("scroll", checkScroll);
+      }, [pageScrolled]);
+
     return (
-        <header className='flex justify-between items-center w-full bg-white bg-opacity-[0.1] px-10 fixed z-50'>
+        <header className={`${pageScrolled ? "bg-opacity-[0.8] bg-black" : "bg-white bg-opacity-[0.1]"} transition-all ease-in-out duration-500 flex justify-between items-center w-full px-10 fixed z-50`}>
             <div className="flex items-center">
                 <button>
                     <Image alt='menu icon' src={hamburgerIcon} height={30} width={32}/>
