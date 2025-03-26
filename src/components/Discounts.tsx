@@ -19,12 +19,12 @@ function DiscountAccountCard({ cardData }: { cardData: DiscountAccountCardData }
         <div className='flex flex-col items-start h-[407px] w-[326px] rounded-xl border text-white'>
             <div className='h-[219px] w-[326px] border-b-[1px] relative'>
                 <Link href={url} target='_blank'>
-                    <Image src={image} fill style={{ objectFit: "cover" }} alt='account image'/>
+                    <Image src={image} fill className='rounded-t-xl object-cover' alt='account image'/>
                 </Link>
             </div>
             <div className='flex flex-col gap-3 items-start justify-end h-[188px] rounded-b-xl p-6 bg-[#0070ff] w-full'>
-                <p className="text-2xl">{name}</p>
-                <Link href={url} target='_blank' className='text-xl border-2 px-4 py-2 rounded-lg'>QUIERO MI CÓDIGO</Link>
+                <p className="text-xl">{name}</p>
+                <Link href={url} target='_blank' className='border-2 px-4 py-2 rounded-lg'>QUIERO MI CÓDIGO</Link>
             </div>
         </div>
     )
@@ -47,7 +47,7 @@ export default function Discounts() {
                     <h1 className='text-5xl text-black font-bold '>Códigos de descuento</h1>
                     <h3 className='text-black font-semibold'>¿Sos socio de Club LA NACION? Descargá tu código y disfrutá beneficios exclusivos en tus marcas favoritas</h3>
                 </div>
-                <button className='text-blue-500 border-blue-500 rounded-l-full rounded-r-full p-4 w-max h-max border-[1px] font-bold'>TODOS LOS CÓDIGOS</button>
+                <button className='text-blue-500 border-blue-500 rounded-l-full rounded-r-full p-4 w-max h-max border-2 font-bold'>TODOS LOS CÓDIGOS</button>
             </div>
             <div className='flex w-[85vw] justify-between'>
                 <Image className='cursor-pointer z-50' src={arrowLeftIcon} alt='slide to the left button' width={25} height={25}/>
