@@ -26,7 +26,8 @@ export function initResponseData() {
 export function paginate(page: number, accounts: Account[]): PageData {
     const pageStart = (page - 1) * PAGE_SIZE
     const pageEnd = pageStart + PAGE_SIZE
-    const totalPages = Math.floor(accounts.length / PAGE_SIZE)
+    const additionalLastPage = Math.min(accounts.length % PAGE_SIZE, 1)
+    const totalPages = Math.floor(accounts.length / PAGE_SIZE) + additionalLastPage
     const nextPage = page + 1
     const previousPage = page - 1
 

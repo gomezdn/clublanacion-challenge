@@ -7,8 +7,7 @@ import arrowRightIcon from '@public/svg/arrow-right-black.svg'
 import arrowLeftIcon from '@public/svg/arrow-left-black.svg'
 import locationIcon from '@public/svg/location-icon.svg'
 import { formatDistance } from "@/lib/account"
-import { useEffect, useState } from "react"
-import { getTourismAccountCardsData } from "@/lib/services"
+import { useTourismAccounts } from "@/lib/hooks"
 
 function TourismAccountCard({ cardData }: { cardData: TourismAccountCardData}) {
     const {
@@ -45,14 +44,13 @@ function TourismAccountCard({ cardData }: { cardData: TourismAccountCardData}) {
 }
 
 export default function Tourism() {
-    const [accounts, setAccounts] = useState<TourismAccountCardData[]>([])
-
-    useEffect(() => {
-        (async () => {
-            const tourismAccounts = await getTourismAccountCardsData()
-            setAccounts(tourismAccounts)
-        })()
-    }, [])
+    const {
+        accounts,
+        nextPage,
+        previousPage,
+        getNextPageAccounts,
+        getPreviousPageAccounts
+    } = useTourismAccounts()
 
     return (
         <section className='flex flex-col items-center gap-10 h-max py-24 w-full bg-white'>
@@ -61,11 +59,11 @@ export default function Tourism() {
                 <button className='text-blue-500 border-blue-500 rounded-l-full rounded-r-full px-6 py-4 w-max h-max border-2 text-center font-bold'>TODOS LOS BENEFICIOS</button>
             </div>
             <div className='flex w-[85vw] justify-between'>
-                <Image className='cursor-pointer z-50' src={arrowLeftIcon} alt='slide to the left button' width={25} height={25}/>
+                <Image onClick={getPreviousPageAccounts} className={`${previousPage ? 'cursor-pointer' : 'opacity-40'} z-50`} src={arrowLeftIcon} alt='slide to the left button' width={25} height={25}/>
                 <div className='flex justify-around w-[78vw]'>
                     {accounts.map(a => <TourismAccountCard cardData={a} key={a.name}/>)}
                 </div>
-                <Image className='cursor-pointer z-50' src={arrowRightIcon} alt='slide to the right button' width={25} height={25}/>
+                <Image onClick={getNextPageAccounts} className={`${nextPage ? 'cursor-pointer' : 'opacity-40'} z-50`} src={arrowRightIcon} alt='slide to the right button' width={25} height={25}/>
             </div>
         </section>
     )
