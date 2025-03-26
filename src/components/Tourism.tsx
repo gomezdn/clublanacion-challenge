@@ -20,7 +20,7 @@ function TourismAccountCard({ cardData }: { cardData: TourismAccountCardData}) {
 
     return (
         <div className='flex flex-col items-start h-[407px] w-[326px] rounded-xl border-[1px] bg-white'>
-            <div className='h-[219px] w-[326px] border-b-[1px] relative'>
+            <div className='h-[219px] w-[326px] relative'>
                 <Link href={url} target='_blank'>
                     <Image src={image} fill className='rounded-t-xl object-cover' alt='account image'/>
                 </Link>
@@ -58,21 +58,22 @@ export default function Tourism() {
                 <h1 className='text-5xl text-[#11154b]'>Turismo en Buenos Aires</h1>
                 <button className='text-blue-500 border-blue-500 rounded-l-full rounded-r-full px-6 py-4 w-max h-max border-2 text-center font-bold'>TODOS LOS BENEFICIOS</button>
             </div>
-            {
-                accounts.length
-                ?
+
                 <div className='flex w-[85vw] justify-between'>
                     <Image onClick={getPreviousPageAccounts} className={`${previousPage ? 'cursor-pointer' : 'opacity-30'} z-50`} src={arrowLeftIcon} alt='slide to the left button' width={25} height={25}/>
-                    <div className='flex justify-around w-[78vw]'>
-                        {accounts.map(a => <TourismAccountCard cardData={a} key={a.name}/>)}
-                    </div>
+                    {
+                        accounts.length
+                        ?
+                        <div className='flex justify-around w-[78vw]'>
+                            {accounts.map(a => <TourismAccountCard cardData={a} key={a.name}/>)}
+                        </div>
+                        :
+                        <div className='h-[407px] w-full flex items-center justify-center'>
+                            <h1 className='text-xl text-black'>Cargando productos...</h1>
+                        </div>
+                    }
                     <Image onClick={getNextPageAccounts} className={`${nextPage ? 'cursor-pointer' : 'opacity-30'} z-50`} src={arrowRightIcon} alt='slide to the right button' width={25} height={25}/>
                 </div>
-                :
-                <div className='h-[407px] w-full flex items-center justify-center'>
-                    <h1 className='text-xl text-black'>Cargando productos...</h1>
-                </div>
-            }
         </section>
     )
 }

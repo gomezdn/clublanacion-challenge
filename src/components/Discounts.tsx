@@ -15,8 +15,8 @@ function DiscountAccountCard({ cardData }: { cardData: DiscountAccountCardData }
     } = cardData
 
     return (
-        <div className='flex flex-col items-start h-[407px] w-[326px] rounded-xl border text-white'>
-            <div className='h-[219px] w-[326px] border-b-[1px] relative'>
+        <div className='flex flex-col items-start h-[407px] w-[326px] rounded-xl text-white'>
+            <div className='h-[300px] w-[326px] relative'>
                 <Link href={url} target='_blank'>
                     <Image src={image} fill className='rounded-t-xl object-cover' alt='account image'/>
                 </Link>
@@ -48,21 +48,22 @@ export default function Discounts() {
                 <button className='text-blue-500 border-blue-500 rounded-l-full rounded-r-full p-4 w-max h-max border-2 font-bold'>TODOS LOS CÓDIGOS</button>
             </div>
             {
-                accounts.length
-                ?
                 <div className='flex w-[85vw] justify-between'>
                     <Image onClick={getPreviousPageAccounts} className={`${previousPage ? 'cursor-pointer' : 'opacity-30'} z-50`} src={arrowLeftIcon} alt='slide to the left button' width={25} height={25}/>
-                    <div className='flex justify-around w-[78vw]'>
-                        {accounts.map(a => <DiscountAccountCard key={a.name} cardData={a}/>)}
-                    </div>
+                    {
+                        accounts.length
+                        ?
+                        <div className='flex justify-around w-[78vw]'>
+                            {accounts.map(a => <DiscountAccountCard key={a.name} cardData={a}/>)}
+                        </div>
+                        :
+                        <div className='h-[407px] w-full flex items-center justify-center'>
+                            <h1 className='text-xl text-black'>Cargando productos...</h1>
+                        </div>
+                    }
                     <Image onClick={getNextPageAccounts} className={`${nextPage ? 'cursor-pointer' : 'opacity-30'} z-50`} src={arrowRightIcon} alt='slide to the right button' width={25} height={25}/>
                 </div>
-                :
-                <div className='h-[407px] w-full flex items-center justify-center'>
-                    <h1 className='text-xl text-black'>Cargando productos...</h1>
-                </div>
             }
-
         </section>
     )
 }
