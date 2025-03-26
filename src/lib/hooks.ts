@@ -25,12 +25,14 @@ export function useTourismAccounts() {
 
     async function getNextPageAccounts() {
         if (nextPage) {
+            setAccounts([])
             await getAccounts(nextPage)
         }
     }
 
     async function getPreviousPageAccounts() {
         if (previousPage) {
+            setAccounts([])
             await getAccounts(previousPage)
         }
     }
@@ -67,12 +69,14 @@ export function useDiscountsAccounts() {
 
     async function getNextPageAccounts() {
         if (nextPage) {
+            setAccounts([])
             await getAccounts(nextPage)
         }
     }
 
     async function getPreviousPageAccounts() {
         if (previousPage) {
+            setAccounts([])
             await getAccounts(previousPage)
         }
     }
