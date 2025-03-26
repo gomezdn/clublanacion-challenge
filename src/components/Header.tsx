@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import Image from 'next/image'
 import logo from '@public/svg/lanacion-logo.svg'
 import hamburgerIcon from '@public/svg/hamburger-menu-icon.svg'
@@ -35,7 +35,7 @@ export default function Header() {
             </div>
 
             <div className='flex gap-3 items-center w-max'>
-                <form className='flex md:flex-row flex-col gap-3 w-100'>
+                <form onSubmit={(e: FormEvent<HTMLFormElement>) => e.preventDefault()} className='flex md:flex-row flex-col gap-3 w-100'>
                     <div className='flex md:flex-row flex-col md:gap-0 gap-2'>
                         <input className='w-[350px] p-3 pl-6 bg-white bg-opacity-0 md:rounded-l-full  border outline-none' name='shop' placeholder='Busca un comercio...'/>
                         <input className='w-[350px] p-3 pl-6 bg-white bg-opacity-0 md:rounded-r-full  border outline-none' name='location' placeholder='Ingresa una ubicación...'/>
