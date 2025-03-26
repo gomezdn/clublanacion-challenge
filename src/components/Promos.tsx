@@ -27,8 +27,8 @@ export default function PromosSlider() {
 
     return (
         promos.length &&
-        <div className="flex flex-col justify-around w-full min-h-screen px-32 relative">
-            <Image src={promos[activeIndex]} fill alt='promo image' className='z-0 absolute top-0'/>
+        <div className="flex flex-col justify-around w-full h-[33vh] md:min-h-screen px-10 md:px-32 relative">
+            <Image src={promos[activeIndex]} fill alt='promo image'/>
             <div className='flex justify-between mt-auto'>
                 <Image onClick={swipeLeft} className='cursor-pointer z-50' src={arrowLeftIcon} alt='slide to the left button' width={35} height={35}/>
                 <Image onClick={swipeRight} className='cursor-pointer z-50' src={arrowRightIcon} alt='slide to the right button' width={35} height={35}/>

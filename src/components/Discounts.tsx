@@ -45,7 +45,7 @@ export default function Discounts() {
                     <h1 className='text-5xl font-bold'>Códigos de descuento</h1>
                     <h3 className='font-medium'>¿Sos socio de Club LA NACION? Descargá tu código y disfrutá beneficios exclusivos en tus marcas favoritas</h3>
                 </div>
-                <button className='text-blue-500 border-blue-500 rounded-l-full rounded-r-full p-4 w-max h-max border-2 font-bold'>TODOS LOS CÓDIGOS</button>
+                <button className='text-blue-500 border-blue-500 md:rounded-l-full md:rounded-r-full rounded-md p-4 w-max h-max border-2 font-bold'>TODOS LOS CÓDIGOS</button>
             </div>
             {
                 <div className='flex w-[85vw] justify-between'>
@@ -53,7 +53,7 @@ export default function Discounts() {
                     {
                         accounts.length
                         ?
-                        <div className='flex justify-around w-[78vw]'>
+                        <div className='flex overflow-x-scroll justify-around w-[78vw]'>
                             {accounts.map(a => <DiscountAccountCard key={a.name} cardData={a}/>)}
                         </div>
                         :
